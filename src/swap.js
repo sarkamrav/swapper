@@ -3,16 +3,35 @@ import styled from 'styled-components';
 import {selectedItem, selectAll,swapItem,swapedItem,swapedItemSelected} from './util'
 
 const Wrapper = styled.div`
-    width: 500px;
-    border:1px solid black;
-    background-color:white;
-    min-height: 100px;`
-    
+    width: 370px;
+    border: 1px solid lightgrey;;
+    background-color:#EDF4FA;
+    min-height: 46px;
+    span{
+        margin-bottom: 12px;
+        display: inline-block;
+        font-weight: 450;
+        font-size: 18px;
+        border-bottom: 1px solid black;
+    }
+    `
+    const Span =styled.span`
+    margin-top: 23px;
+    display:inline-block;
+    border-bottom:1px solid black;
+    font-size: 20px;
+    font-family: auto;`;
+
     const WDiv = styled.div`
     display: flex;
+    display: flex;
+    width: auto;
+    flex-wrap: wrap;
+    
    `
    const Title = styled.div`
     display:block;
+    font-size: 12.5px;
     margin:3px;
    `
    const WRoot = styled.div`
@@ -30,21 +49,37 @@ const Wrapper = styled.div`
     
 
 const WSpan = styled.button`
- background: ${props => props.isActive?'cadetblue':'white'};
+ background: ${props => props.isActive? '#45a4cc':'white'};
  color: ${props => props.isActive?'white':'black'};
 width:auto;
 display:flex;
-height:30px;
+margin:1px;
+height: 20px;
+border: none;
+font-size: 12px;
 cursor:pointer;
+padding: 2px 10px 2px 10px;
+align-items: center;
+justify-content: center;
 backgroundColor:white`
 
 const Button = styled.button`
 height: 41px;
-margin: 4%;
+margin: 2% 2%;
 cursor:pointer;
+background:white;
+border:none;
+outline: none;
+:hover{
+    outline: none;
+}
 `
 const Pbutton = styled.button`
 cursor:pointer;
+color:#45a4cc;
+background:white;
+font-size: 12.5px;
+border:none;
 `
 
    
@@ -78,7 +113,17 @@ const reducer =(state,action)=>{
 }
 
 const Swap = ()=>{
-const [data,dispatch] = useReducer(reducer,{item:[],swapitem:[]})
+const [data,dispatch] = useReducer(reducer,{item:[ {item: "0-10", isActive: false, swapitem: false},
+{item: "10-20", isActive: false, swapitem: false},
+{item: "20-30", isActive: false, swapitem: false},
+{item: "30-40", isActive: false, swapitem: false},
+{item: "40-60", isActive: false, swapitem: false},
+{item: "60-80", isActive: false, swapitem: false}],swapitem:[{item: "100-110", isActive: false, swapitem: true},
+{item: "110-500", isActive: false, swapitem: true},
+{item: "500-1000", isActive: false, swapitem: true},
+{item: "1000-5000", isActive: false, swapitem: true},
+{item: "5000-10000", isActive: false, swapitem: true},
+{item: "10000-50000", isActive: false, swapitem: true},]})
 const [swapitem,updatedswapitem] = useState([])
 
 let [item,updatedItem] = useState('');
@@ -109,18 +154,20 @@ payload:{
 updatedItem('');
     }
 }
-console.log("state",swapitem);
+console.log("state",data);
 
 return (
         <>
-     <TitleWrapper>
+     {/* <TitleWrapper>
       <div>Add Items to the Swapper: </div>
       <input type = 'text' name ='item' value ={item} onChange ={(e)=>nameChangeHandler(e)} />
     <Pbutton onClick ={submitData} >Add</Pbutton>
-    </TitleWrapper>
+    </TitleWrapper> */}
+   <Span>Mock up</Span>
   <WRoot>
-
+ 
     <div>
+ 
     <Title>  Available: <Pbutton onClick={()=>{dispatch({type:'SELECT_ALL'})}}>SelectAll</Pbutton></Title>
     <Wrapper>
  
